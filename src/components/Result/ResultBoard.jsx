@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
 import styles from './ResultBoard.module.css';
+import ReactConfetti from 'react-confetti';
 
 const ResultBoard = ({ maxQuizLen, correctNum }) => {
     const [count, setCount] = useState(false);
+    const width = window.innerWidth;
+    const height = window.innerHeight;
 
     useEffect(() => {
         setTimeout(() => {
@@ -11,6 +14,7 @@ const ResultBoard = ({ maxQuizLen, correctNum }) => {
     },[])
     
     return (
+        <>
         <div className={styles.resultBoard}>
             <span>あなたの正解数は...</span>
             {count && (
@@ -22,6 +26,14 @@ const ResultBoard = ({ maxQuizLen, correctNum }) => {
                 </>
             )}
        </div>
+       {count && <ReactConfetti
+            width={width}
+            height={height}
+            tweenDuration={4000}
+            run={true}
+        />
+       }
+       </>
     )
 }
 
