@@ -31,6 +31,4 @@ const quizData = [
   },
 ];
 
-// const options = []
-
 export default quizData;
