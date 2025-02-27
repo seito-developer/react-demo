@@ -3,6 +3,7 @@ import Button from '../components/Button/Button'
 import Display from '../components/Display/Display'
 import quizData from '../data/quiz'
 import { useNavigate, useRoutes } from 'react-router-dom'
+import { ROUTES } from '../constants/constants'
 // import { Route } from 'react-router-dom';
 useRoutes
 function QuizPage() {
@@ -22,7 +23,7 @@ function QuizPage() {
       setQuizIndex(quizIndex + 1)
     }
     else {
-      navigate('/result', { state: {
+      navigate(ROUTES.RESULT, { state: {
         quizLen: MAX_QUIZ_LEN,
         correctNum: correctNum
       }})
