@@ -5,7 +5,7 @@ const Loading = ({ active }) => {
     
     return (
         <div className={`${styles.loading} ${active ? styles.isActive : ''}`}>
-            〜結果発表〜
+            <span>〜結果発表〜</span>
        </div>
     )
 }
