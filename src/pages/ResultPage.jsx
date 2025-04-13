@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import Result from '../components/Result/Result'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { ROUTES } from '../constants/constants'
 import Loading from '../components/Loading/Loading'
 
@@ -25,6 +25,10 @@ function ResultPage() {
       <h1>Result</h1>
       <Loading active={active} />
       <Result maxQuizLen={quizResult?.quizLen} correctNum={quizResult?.correctNum} />
+      <br />
+      <Link to={ROUTES.QUIZ}>
+        もう一度チャレンジ
+      </Link>
     </>
   )
 }
