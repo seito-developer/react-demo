@@ -1,50 +1,52 @@
-import {  useState } from 'react'
-import Button from '../components/Button/Button'
-import Display from '../components/Display/Display'
-import quizData from '../data/quiz'
-import { useNavigate, useRoutes } from 'react-router-dom'
-import { ROUTES } from '../constants/constants'
-// import { Route } from 'react-router-dom';
-useRoutes
+import { useEffect, useState } from "react";
+import Button from "../components/Button/Button";
+import Display from "../components/Display/Display";
+import quizData from "../data/quiz";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../constants/constants";
+
 function QuizPage() {
   const [quizIndex, setQuizIndex] = useState(0);
-  const [correctNum, setCorrectNum] = useState(0)
-  const MAX_QUIZ_LEN = quizData.length
-  const navigate = useNavigate()
+  const  [answerLogs, setAnswerLogs] = useState([]); //boolean[]
+  const navigate = useNavigate();
+  const MAX_QUIZ_LEN = quizData.length;
 
-  const handleButton = (e) => {
-    // 判定
-    if(Number(e.currentTarget.value) === quizData[quizIndex].answerIndex){
-      setCorrectNum(correctNum + 1)
+  const handleButton = (clickedIndex) => {
+    // 正誤判定
+    if (clickedIndex === quizData[quizIndex].answerIndex) {
+      setAnswerLogs([...answerLogs, true])
+    } else {
+      setAnswerLogs([...answerLogs, false])
     }
-    
-    // 次のクイズへ進む or 結果発表
-    if(quizIndex < MAX_QUIZ_LEN - 1){
-      setQuizIndex(quizIndex + 1)
+
+    setQuizIndex(quizIndex + 1);
+  };
+
+  useEffect(() => {
+    if (MAX_QUIZ_LEN === answerLogs.length) {
+      const corerctNum = answerLogs.filter(answer => answer === true);
+      navigate(ROUTES.RESULT, {
+        state: {
+          maxQuizLen: MAX_QUIZ_LEN,
+          correctNumLen: corerctNum.length.toString(),
+        },
+      });
     }
-    else {
-      navigate(ROUTES.RESULT, { state: {
-        quizLen: MAX_QUIZ_LEN,
-        correctNum: correctNum
-      }})
-    }
-  }
+  }, [MAX_QUIZ_LEN, navigate, answerLogs])
 
   return (
     <>
-      
-      <Display quizIndex={quizIndex} />
+      {quizData[quizIndex] && <Display>{`Q.${quizIndex + 1} ${quizData[quizIndex].question}`}</Display>}
       <br />
-      {quizData[quizIndex].options.map((option, index) => {
+      {quizData[quizIndex] && quizData[quizIndex].options.map((option, index) => {
         return (
-          <Button key={`option-${index}`} value={index} onClick={(e) => handleButton(e)}>
+          <Button key={`option-${index}`} onClick={() => handleButton(index)}>
             {option}
           </Button>
-        )
+        );
       })}
     </>
-  )
+  );
 }
 
-
-export default QuizPage
+export default QuizPage;

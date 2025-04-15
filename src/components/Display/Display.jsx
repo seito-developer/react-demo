@@ -1,13 +1,7 @@
-import quizData from '../../data/quiz';
-import styles from './Display.module.css';
+import styles from "./Display.module.css";
 
-const Display = ({ quizIndex }) => {
-    
-    return (
-        <div className={styles.display}>
-          {`Q.${quizIndex + 1} ${quizData[quizIndex].question}`}
-        </div>
-    )
-}
+const Display = ({ children }) => {
+  return <div className={styles.display}>{children}</div>;
+};
 
 export default Display;
