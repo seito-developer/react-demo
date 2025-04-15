@@ -10,7 +10,7 @@ const Result = ({ maxQuizLen, correctNumLen }) => {
       <div className={styles.result}>
         あなたの正解数は...
         <span className={styles.resultHighlight}>
-          {maxQuizLen}問中、{correctNumLen}問
+          {maxQuizLen.toString()}問中、{correctNumLen.toString()}問
         </span>
         でした！
       </div>

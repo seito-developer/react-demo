@@ -14,9 +14,9 @@ function QuizPage() {
   const handleButton = (clickedIndex) => {
     // 正誤判定
     if (clickedIndex === quizData[quizIndex].answerIndex) {
-      setAnswerLogs([...answerLogs, true])
+      setAnswerLogs((prev) => [...prev, true])
     } else {
-      setAnswerLogs([...answerLogs, false])
+      setAnswerLogs((prev) => [...prev, false])
     }
 
     setQuizIndex(quizIndex + 1);
@@ -24,11 +24,11 @@ function QuizPage() {
 
   useEffect(() => {
     if (MAX_QUIZ_LEN === answerLogs.length) {
-      const corerctNum = answerLogs.filter(answer => answer === true);
+      const correctNum = answerLogs.filter(answer => answer === true);
       navigate(ROUTES.RESULT, {
         state: {
           maxQuizLen: MAX_QUIZ_LEN,
-          correctNumLen: corerctNum.length.toString(),
+          correctNumLen: correctNum.length,
         },
       });
     }
