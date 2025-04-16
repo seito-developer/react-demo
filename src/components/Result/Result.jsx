@@ -2,8 +2,6 @@ import styles from "./Result.module.css";
 import ReactConfetti from "react-confetti";
 
 const Result = ({ maxQuizLen, correctNumLen }) => {
-  const width = window.innerWidth;
-  const height = window.innerHeight;
 
   return (
     <>
@@ -14,12 +12,7 @@ const Result = ({ maxQuizLen, correctNumLen }) => {
         </span>
         でした！
       </div>
-      <ReactConfetti
-        width={width}
-        height={height}
-        tweenDuration={5000}
-        run={true}
-      />
+      <ReactConfetti />
     </>
   );
 };

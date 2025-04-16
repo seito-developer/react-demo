@@ -14,12 +14,13 @@ function QuizPage() {
   const handleButton = (clickedIndex) => {
     // 正誤判定
     if (clickedIndex === quizData[quizIndex].answerIndex) {
-      setAnswerLogs((prev) => [...prev, true])
+      setAnswerLogs(prev => [...prev, true])
     } else {
-      setAnswerLogs((prev) => [...prev, false])
+      setAnswerLogs(prev => [...prev, false])
     }
 
-    setQuizIndex(quizIndex + 1);
+    // 次の問題へ
+    setQuizIndex(prev => prev + 1);
   };
 
   useEffect(() => {
