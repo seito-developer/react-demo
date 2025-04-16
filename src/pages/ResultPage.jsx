@@ -6,8 +6,7 @@ import Loading from "../components/Loading/Loading";
 
 function ResultPage() {
   const location = useLocation();
-  const maxQuizLen = location.state?.maxQuizLen;
-  const correctNumLen = location.state?.correctNumLen;
+  const {maxQuizLen, correctNumLen} = location.state || {};
   const [active, setActive] = useState(false);
   const navigate = useNavigate();
 
