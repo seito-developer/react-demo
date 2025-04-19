@@ -1,15 +1,15 @@
 @keyframes gakuburu {
-    50%{
+    50% {
         transform: translateX(3px);
     }
     100% {
-        transform: rotate(-3px);
+        transform: translateX(-3px);
     }
-    
 }
+
 .loading {
     position: fixed;
-    z-index: 9999;
+    z-index: 999;
     left: 0;
     top: 0;
     width: 100%;
@@ -19,7 +19,7 @@
     align-items: center;
     justify-content: center;
     font-size: 50px;
-    transition: ease-in-out 0.5s;
+    transition: transform 0.5s ease-in-out;
 
     > span {
         animation: gakuburu 0.1s infinite;

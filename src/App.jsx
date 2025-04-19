@@ -1,9 +1,9 @@
-import './App.css'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import HomePage from './pages/HomePage'
-import QuizPage from './pages/QuizPage'
-import ResultPage from './pages/ResultPage'
-import { ROUTES } from './constants/constants'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
+import { ROUTES } from "./const";
+import HomePage from "./pages/HomePage";
+import QuizPage from "./pages/QuizPage";
+import ResultPage from "./pages/ResultPage";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         <Route path={ROUTES.RESULT} element={<ResultPage />} />
       </Routes>
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;
