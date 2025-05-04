@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import Result from "../components/Result/Result";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { ROUTES } from "../constants/constants";
 import Loading from "../components/Loading/Loading";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { ROUTES } from "../const";
 
-function ResultPage() {
+export default function ResultPage() {
   const location = useLocation();
-  const {maxQuizLen, correctNumLen} = location.state || {};
+  const { maxQuizLen, correctNumLen } = location.state || {};
   const [active, setActive] = useState(false);
   const navigate = useNavigate();
 
@@ -20,16 +20,13 @@ function ResultPage() {
 
   return (
     <>
-      <h1>Result</h1>
       <Loading active={active} />
-      {(maxQuizLen && correctNumLen) && <Result
-        maxQuizLen={maxQuizLen}
-        correctNumLen={correctNumLen}
-      />}
+      {maxQuizLen && correctNumLen && (
+        <Result maxQuizLen={maxQuizLen} correctNumLen={correctNumLen} />
+      )}
+
       <br />
       <Link to={ROUTES.QUIZ}>もう一度チャレンジ</Link>
     </>
   );
 }
-
-export default ResultPage;

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { ROUTES } from "../constants/constants";
+import { ROUTES } from "../const";
 
-function HomePage() {
+export default function HomePage() {
   return (
     <>
       <h1>Quiz App</h1>
@@ -9,5 +9,3 @@ function HomePage() {
     </>
   );
 }
-
-export default HomePage;

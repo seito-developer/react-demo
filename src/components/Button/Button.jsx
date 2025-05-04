@@ -1,16 +1,9 @@
 import styles from "./Button.module.css";
 
-const Button = ({ onClick, children, value }) => {
+export default function Button({ children, onClick }) {
   return (
-    <button
-      className={styles.button}
-      type="button"
-      value={value}
-      onClick={onClick}
-    >
+    <button className={styles.button} type="button" onClick={onClick}>
       <span className={styles.buttonInner}>{children}</span>
     </button>
   );
-};
-
-export default Button;
+}
